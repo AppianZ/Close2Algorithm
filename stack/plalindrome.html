@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="screen-orientation" content="portrait">
+    <title>解密回文</title>
+</head>
+<body>
+<div id="container">
+    <input id="ipt" type="text"/>
+    <button id="submit">确定</button>
+    <button id="clear">清空</button>
+    <section id="result">
+    </section>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.js"></script>
+<script src="stack.js"></script>
+<script>
+    let target = new Stack();
+
+    function decode(pre, pro) {
+        target.clearStack();
+        for ( let v in pre ) target.pushStack(pre[v]);
+        console.log(target.getTopElement());
+        for ( let p in pro ) {
+            let popValue = target.popStack();
+            if (popValue !== pro[p]) {
+                $('#result').append(`<p>No.${pro.length - p}: ${popValue} !== No.-${pro.length - p}: ${pro[p]} </p>`)
+                break;
+            } else {
+                $('#result').append(`<p>No.${pro.length - p}: ${popValue} === No.-${pro.length - p}: ${pro[p]} </p>`)
+            }
+        }
+    }
+
+    $('#submit').on('click', () => {
+        let ipt    = $('#ipt').val();
+        let middle = ipt.length / 2;
+        let pre    = ipt.substring(0, middle);
+        let pro    = ipt.substring(Math.round(middle), ipt.length);
+        decode(pre, pro);
+        $('#result').append(`<p>-----------------------</p>`)
+    });
+
+    $('#clear').on('click', () => {
+        $('#result').html('');
+        $('#ipt').val('');
+        target.clearStack();
+    });
+</script>
+</body>
+</html>
