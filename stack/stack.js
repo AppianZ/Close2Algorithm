@@ -9,8 +9,8 @@ class Stack {
 	}
 	
 	pushStack(element) {
-		this.data.push(element);
 		this.top++;
+		this.data[this.top] = element;
 		return this;
 	}
 	
@@ -32,12 +32,11 @@ class Stack {
 	}
 	
 	length() {
-		return this.data.length;
+		return this.top + 1;
 	}
 	
 	clearStack() {
-		this.data.length = 0;
-		this.top         = -1;
+		this.top = -1;
 		return this;
 	}
 	

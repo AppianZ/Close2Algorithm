@@ -22,7 +22,6 @@
     function decode(pre, pro) {
         target.clearStack();
         for ( let v in pre ) target.pushStack(pre[v]);
-        console.log(target.getTopElement());
         for ( let p in pro ) {
             let popValue = target.popStack();
             if (popValue !== pro[p]) {
