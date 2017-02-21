@@ -25,10 +25,10 @@
         for ( let p in pro ) {
             let popValue = target.popStack();
             if (popValue !== pro[p]) {
-                $('#result').append(`<p>No.${pro.length - p}: ${popValue} !== No.-${pro.length - p}: ${pro[p]} </p>`)
+                $('#result').append(`<p>No.${pro.length - p}: ${popValue} !== No.-${pro.length - p}: ${pro[p]} </p>`);
                 break;
             } else {
-                $('#result').append(`<p>No.${pro.length - p}: ${popValue} === No.-${pro.length - p}: ${pro[p]} </p>`)
+                $('#result').append(`<p>No.${pro.length - p}: ${popValue} === No.-${pro.length - p}: ${pro[p]} </p>`);
             }
         }
     }
@@ -39,7 +39,7 @@
         let pre    = ipt.substring(0, middle);
         let pro    = ipt.substring(Math.round(middle), ipt.length);
         decode(pre, pro);
-        $('#result').append(`<p>-----------------------</p>`)
+        $('#result').append(`<p>-----------------------</p>`);
     });
 
     $('#clear').on('click', () => {
