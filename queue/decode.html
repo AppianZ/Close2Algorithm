@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="screen-orientation" content="portrait">
+    <title>解密QQ号</title>
+</head>
+<body>
+<div id="container">
+    <p>解密规则:将每次将数字的第一位删除,将第二位排入末尾,直至数字为空,<br/>
+        删除的数字顺序就是解密后的qq</p>
+    <input id="ipt" type="text" placeholder="请输入数字"/>
+    <button id="submit">确定</button>
+    <button id="clear">清空</button>
+    <section id="result">
+    </section>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.js"></script>
+<script src="queue.js"></script>
+<script>
+    function decode(string) {
+        let real_code = '';
+        let target    = new Queue();
+        for ( let str in string ) target.enQueue(string[str]);
+        while ( target.getHeadElement() !== undefined ) {
+            real_code += target.deQueue();
+            target.enQueue(target.deQueue());
+            $('#result').append(`<p>${real_code}</p>`);
+        }
+    }
+
+    $('#submit').on('click', () => {
+        let ipt = $('#ipt').val();
+        decode(ipt);
+        $('#result').append(`<p>-----------------------</p>`);
+    });
+
+    $('#clear').on('click', () => {
+        $('#result').html('');
+        $('#ipt').val('');
+    });
+</script>
+</body>
+</html>
