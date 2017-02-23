@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="screen-orientation" content="portrait">
+    <title>循环队列</title>
+</head>
+<body>
+<div id="container">
+    <!--<p>循环队列,可以看成是一个向量空间首尾相连的圆环</p>
+    <p>如果只用head === tail,很难区分空队和满队。</p>
+    <p>判断循环队列是否为满的方式有两个:</p>
+    <p>1. 专门使用一个变量作为统计变量,记录当前队列的个数</p>
+    <p>2. 始终在队列尾部留出一个空位,当tail+1指向队头的时候,表示队列已满</p><br>-->
+
+    <p>请指定maxsize(1-100)和初始队列:</p>
+    <input id="number" type="number" min="1" max="100" value="10"/>
+    <input id="ipt" type="text" maxlength="100" placeholder="请输入队列"/>
+    <button id="submit">提交</button>
+    <button id="clear">清空</button>
+    <p>点击"出队",输出队头:</p>
+    <button id="dequeue">出队</button>
+    <p>请输入入队的字符,并点击"入队":</p>
+    <input id="enqueueIpt" type="text" placeholder="请输入字符"/>
+    <button id="enqueue">入队</button>
+    <section id="result">
+    </section>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.js"></script>
+<script src="circular-queue.js"></script>
+<script>
+    $('#submit').on('click', ()=> {
+        let max = $('#number').val();
+        let string = $('#ipt').val();
+        let target = new CircularQueue(max);
+        for(let str in string) !target.enQueue(string[str]) ? console.log(123): console.log(456);
+    });
+</script>
+</body>
+</html>
