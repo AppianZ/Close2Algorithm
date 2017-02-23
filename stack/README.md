@@ -28,7 +28,7 @@ top   data
 8. 如果有其他需要,也可以增加操作
 
 ## 用栈解决回文算法
-[demo](plalindrome.html)
+[demo](stack.html)
 
 先将获取到的字符对半切
 ```js
